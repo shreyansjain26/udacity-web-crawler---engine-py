@@ -14,7 +14,12 @@ def union(a,b):#The union function merges the second list into first, with out d
 	for e in b:
 		if e not in a:
 			a.append(e)
- 
+
+'''gets the next url from html page by finding next a tag
+:param page: HTML document
+:return url: next URL
+:return end_quote: index where link ends in page
+'''
 def get_next_url(page):
 	start_link=page.find("a href")
 	if(start_link==-1):
@@ -23,6 +28,12 @@ def get_next_url(page):
 	end_quote=page.find('"',start_quote+1)
 	url=page[start_quote+1:end_quote]
 	return url,end_quote
+
+'''gets all the links from an HTML page
+:param page: HTML document
+:return links: list of all the links
+'''
+
 def get_all_links(page):
 	links=[]
 	while(True):
@@ -33,6 +44,7 @@ def get_all_links(page):
 		else:
 			break
 	return links
+
 def Look_up(index,keyword):#This function is for given an index, it finds the keyword in the index and returns the list of links
 	#f=[]
 	if keyword in index:
